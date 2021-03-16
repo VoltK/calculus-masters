@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraph.css" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Riemann sums</title>
+</head>
+<body>
+    <div class="container-fluid ">
+        <div class="row mt-5" style="height: 90vh;">
+            <div class="col-3" style="margin-left: 10px; -webkit-box-shadow: 0px 5px 17px -2px rgba(0,0,0,0.55);box-shadow: 0px 5px 17px -2px rgba(0,0,0,0.55); border-radius: 5px;">
+                <input type="text" class="form-control mt-3" id="math-input" placeholder="Enter a function">
+                <div id="math-display">\[ \sin{\left( 2*x \right)} \]</div>
+                <div class="row">
+                    <div class="col-8">
+                        <input type="range" min="1" max="50" value="10" class="slider" id="n">
+                    </div>
+                    <div class="col-4"><p>n = <span id="nVal"></span></p></p></div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <input type="range" min="-10" max="0" value="1" class="slider" id="start">
+                    </div>
+                    <div class="col-4">
+                        <p>start = <span id="sVal"></span></p>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                        <input type="range" min="0" max="10" value="1" class="slider" id="end">
+                    </div>
+                    <div class="col-4">
+                        <p>end = <span id="eVal"></span></p>
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-8 ml-5">
+                <div id="jxgbox" class="jxgbox" style="height: 90vh;">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="./mathlex-unknown.js"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
+        <script src="./riemann.js"></script>
+</body>
+</html>

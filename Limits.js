@@ -1,113 +1,23 @@
 var inputFunction = "sin(x)";
-var limit = 10;
 
 const board = JXG.JSXGraph.initBoard("jxgbox", {
-boundingbox: [-10, 10, 10, -10], axis: true,
+  boundingbox: [-10, 10, 10, -10],
+  axis: true,
   showCopyright: false,
   pan: {
     enabled: true,
     needShift: false,
   },
 });
-var f = board.jc.snippet(inputFunction, true, "x", false);
 
-var a = board.create(
-  "slider",
-  [
-    [1, 4],
-    [5, 4],
-    [-10, -3, 0],
-  ],
-  { visible: false }
-);
-var b = board.create(
-  "slider",
-  [
-    [1, 3],
-    [5, 3],
-    [0, 2 * Math.PI, 10],
-  ],
-  { visible: false }
-);
-var plot = board.create(
-  "functiongraph",
-  [
-    f,
-    function () {
-      return a.Value();
-    },
-    function () {
-      return b.Value();
-    },
-  ],
-  { strokeColor: "black", strokeWidth: 2 }
-);
+var f = board.jc.snippet("1/x", true, "x", false);
 
-var os = board.create(
-  "riemannsum",
-  [
-    f,
-    function () {
-      return n;
-    },
-    function () {
-      return "left";
-    },
-    function () {
-      return a.Value();
-    },
-    function () {
-      return b.Value();
-    },
-    function () {
-      return document.getElementById("sumtype").value;
-    },
-  ],
-  { fillColor: "red", fillOpacity: 0.3, strokeColor: "black" }
-);
+var plot = board.create("functiongraph", [f], {
+  strokeColor: "black",
+  strokeWidth: 2,
+});
 
-var updateGraph = function () {
-  f = board.jc.snippet(inputFunction, true, "x", false);
-  board.removeObject(os);
-  board.removeObject(plot);
-  plot = board.create(
-    "functiongraph",
-    [
-      f,
-      function () {
-        return a.Value();
-      },
-      function () {
-        return b.Value();
-      },
-    ],
-    { strokeColor: "black", strokeWidth: 2 }
-  );
-  os = board.create(
-    "riemannsum",
-    [
-      f,
-      function () {
-        return n;
-      },
-      function () {
-        return document.getElementById("sumtype").value;
-      },
-      function () {
-        return "left";
-      },
-      function () {
-        return a.Value();
-      },
-      function () {
-        return b.Value();
-      },
-    ],
-    { fillColor: "red", fillOpacity: 0.3, strokeColor: "black" }
-  );
-
-  board.fullUpdate();
-};
+board.unsuspendUpdate();
 
 $(document).ready(function () {
   var mjDisplayBox, mjOutBox;
@@ -118,9 +28,9 @@ $(document).ready(function () {
   });
 
   $("#math-input").on("keyup", function (evt) {
+    console.log(evt);
     var math = $(this).val();
     inputFunction = math;
-    updateGraph();
     $(this).css("color", "black");
     if (math.length > 0) {
       try {
@@ -141,17 +51,6 @@ $(window).resize(function () {
   $(".JXG_navigation_button").toArray()[1].click();
 });
 
-$(window).on("wheel", function (e) {
-  var delta = e.originalEvent.deltaY;
-  if (delta > 0) {
-    $(".JXG_navigation_button").toArray()[0].click();
-  } else {
-    $(".JXG_navigation_button").toArray()[2].click();
-  }
-
-  return false;
-});
-
 $(document).keydown((e) => {
   switch (e.key) {
     case "ArrowLeft":
@@ -168,14 +67,3 @@ $(document).keydown((e) => {
       break;
   }
 });
-
-var nSlider = document.getElementById("n");
-var noutput = document.getElementById("nVal");
-noutput.innerHTML = nSlider.value;
-nSlider.value = n;
-nSlider.oninput = function () {
-  noutput.innerHTML = this.value;
-  n = this.value;
-  board.update();
-};
-

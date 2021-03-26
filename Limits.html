@@ -1,17 +1,17 @@
 <html lang="en">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraph.css" />
     <link rel="stylesheet" href="./styles.css">
-    
-          <h1>Find Limits</h1> 
-       
-       </head>
+    <title>Limit</title>
+</head>
 
+<<<<<<< HEAD
       
        <body>
         <div class="container-fluid ">
@@ -29,41 +29,59 @@
                             <input type="range" min="-10308" max="10308" value="-1" class="slider" id="n">
                         </div>
                         <div class="col-4"><p>Limit value: <span id="nVal"></span></p></p></div>
+=======
+<body>
+    <div class="container-fluid ">
+        <div class="row mt-lg-5">
+            <div class="col-lg-3 mb-3 mr-2 shadow pb-2 rounded" style="margin-left: 10px;">
+                <h2>Limits</h2>
+                <div class="row">
+                    <div class="col-3 mt-2 ">
+                        <span>\[ f \left( x \right) =\]</span>
                     </div>
-                   
-    
-                    
-                    
+                    <div class="col-8">
+                        <input type="text" class="form-control mt-3" id="math-input" placeholder="Enter a function"
+                            style="font-size: 14px;">
+>>>>>>> acfe09fd72953634ffdb8f7098cc5efac18abaad
+                    </div>
                 </div>
-                <div class="col-8 ml-5">
-                    <div id="jxgbox" class="jxgbox" style="height: 90vh;">
+
+                <div class="row pb-3 pt-3 mb-5mt-2">
+                    <div class="col-3"><span>\[ f \left( x \right) =\]</span></div>
+                    <div class="col">
+                        <div id="math-display">\[ 1/x \]</div>
                     </div>
-                    
                 </div>
             </div>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div id="jxgbox" class="jxgbox" style="height: 90vh;border-color: rgba(0,0,0,0.55);">
+                </div>
+
+            </div>
         </div>
-        <script src="./mathlex-unknown.js"></script>
-        <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-        });
+    </div>
+    <script src="./mathlex-unknown.js"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
-        <script type="text/javascript" async
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-            </script>
-            
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <script type="text/javascript" charset="UTF-8"
-                src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
-            <script src="./Limits.js"></script>
-    </body>
-    </html>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
+    <script src="./Limits.js"></script>
+</body>
+
 </html>

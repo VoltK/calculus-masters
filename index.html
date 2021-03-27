@@ -1,14 +1,55 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Calculus Master</title>
+
+    <style>
+        .btn-primary {
+            border-radius: 30px;
+            background-color: #080808;
+            background-color: #e2f59c;
+            color: #080808;
+            padding: 10;
+            width: 30%;
+            font-size: 1.5vw;
+        }
+        
+        .btn-primary:hover {
+            background-color: gray;
+        }
+        
+        body {
+            animation: fadeInAnimation ease 5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        
+        .box:hover {
+            transform: scale(1.1);
+        }
+        
+        .box {
+            transition: transform .25s ease;
+        }
+        
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body style="background-color:#080808;">
-    <div class="container" >
+    <div class="container">
         <div class="row justify-content-center">
             <div class="box" style="border-width: 1.5em; border-style: solid; border-color: #e2f59c; margin-top: 5em;">
                 <div class="letter" style="padding-top: 10px;padding-bottom: 10px;">
@@ -22,22 +63,15 @@
             </div>
         </div>
         <div class="row justify-content-center" style="margin-top: 40px;">
-            <a type="button" class="btn" style="border-radius: 30px;background-color: #e2f59c; color: #080808; padding: 10;width: 30%;font-size: 1.5vw;" href="./riemann.html">RIEMANN SUM</a>
-            <a type="button" class="btn" 
-                style="border-radius: 30px;background-color: #21e8e8; color: #080808; padding: 8px; margin-left: 10px; width: 30%; font-size: 1.5vw;" href="./Limits.html">LIMITS</a>
-            <a type="button" class="btn"
-                style="border-radius: 30px;background-color: #e2f59c; color: #080808; padding: 10;margin-left: 10px; width: 30%; font-size: 1.5vw;" href="./tangent.html">TANGENT LINE</a>
+            <a type="button" class="btn btn-primary" href="./riemann.html">RIEMANN SUM</a>
+            <a type="button" class="btn btn-primary" style="background-color: #21e8e8 ; " href="./Limits.html ">LIMITS</a>
+            <a type="button " class="btn btn-primary " href="./tangent.html ">TANGENT LINE</a>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 </body>
+
 </html>

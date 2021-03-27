@@ -9,6 +9,8 @@
     <title>Calculus Master</title>
 
     <style>
+        /* Buttons css */
+        
         .btn-primary {
             border-radius: 30px;
             background-color: #080808;
@@ -22,12 +24,14 @@
         .btn-primary:hover {
             background-color: gray;
         }
+        /* Body onload fade in css */
         
         body {
             animation: fadeInAnimation ease 5s;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
         }
+        /* Box resising css (logo) */
         
         .box:hover {
             transform: scale(1.1);
@@ -44,6 +48,38 @@
             100% {
                 opacity: 1;
             }
+        }
+        /* Sidenav css */
+        
+        #mySidenav a {
+            position: absolute;
+            left: -280px;
+            transition: 0.3s;
+            padding: 30px;
+            width: 300px;
+            text-decoration: none;
+            font-size: 35px;
+            color: black;
+            border-radius: 0 15px 15px 0;
+        }
+        
+        #mySidenav a:hover {
+            left: 0;
+        }
+        
+        #canvas {
+            top: 20px;
+            background-color: #e2f59c;
+        }
+        
+        #email {
+            top: 160px;
+            background-color: #21e8e8;
+        }
+        
+        #website {
+            top: 300px;
+            background-color: #e2f59c;
         }
     </style>
 </head>
@@ -62,16 +98,30 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center" style="margin-top: 40px;">
-            <a type="button" class="btn btn-primary" href="./riemann.html">RIEMANN SUM</a>
-            <a type="button" class="btn btn-primary" style="background-color: #21e8e8 ; " href="./Limits.html ">LIMITS</a>
-            <a type="button " class="btn btn-primary " href="./tangent.html ">TANGENT LINE</a>
-        </div>
+
+        <body>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="#" id="canvas">Canvas</a>
+                <br>
+                <br>
+                <a href="#" id="email">Email</a>
+                <br>
+                <br>
+                <br>
+                <a href="#" id="website">Website</a>
+
+            </div>
+            <div class="row justify-content-center" style="margin-top: 40px;">
+                <a type="button" class="btn btn-primary" href="./riemann.html">RIEMANN SUM</a>
+                <a type="button" class="btn btn-primary" style="background-color: #21e8e8 ; " href="./Limits.html ">LIMITS</a>
+                <a type="button " class="btn btn-primary " href="./tangent.html ">TANGENT LINE</a>
+            </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
-</body>
+    </body>
 
 </html>

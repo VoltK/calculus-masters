@@ -15,7 +15,7 @@ const createBoard = () => {
       factorX: 1.25,
       factorY: 1.25,
       wheel: true,
-      needShift: false,
+      needShift: true,
       min: 0.001,
       max: 1000.0,
       pinchHorizontal: true,
@@ -121,13 +121,14 @@ $(document).ready(function () {
       MathJax.Hub.Queue(["Text", mjOutBox, ""]);
     }
   });
+  $("#math-input").val(inputFunction);
   updateSum();
+  sliders();
 });
 
 $(window).resize(function () {
   if ($(this).width() <= 1000) {
     $("#jxgbox").css("height", "60vh");
-    console.log(";here");
   } else $("#jxgbox").css("height", "90vh");
   $(".JXG_navigation_button").toArray()[1].click();
 });
@@ -149,37 +150,39 @@ $(document).keydown((e) => {
   }
 });
 
-var nSlider = document.getElementById("n");
-var noutput = document.getElementById("nVal");
-noutput.innerHTML = nSlider.value;
-nSlider.value = n;
-nSlider.oninput = function () {
-  noutput.innerHTML = this.value;
-  n = this.value;
-  board.fullUpdate();
-  updateSum();
-};
+const sliders = () => {
+  var nSlider = document.getElementById("n");
+  var noutput = document.getElementById("nVal");
+  noutput.innerHTML = nSlider.value;
+  nSlider.value = n;
+  nSlider.oninput = function () {
+    noutput.innerHTML = this.value;
+    n = this.value;
+    board.fullUpdate();
+    updateSum();
+  };
 
-var sSlider = document.getElementById("start");
-var sOutput = document.getElementById("sVal");
-sOutput.innerHTML = sSlider.value;
-sSlider.value = a.Value();
-start = a.Value();
-sSlider.oninput = function () {
-  sOutput.innerHTML = this.value;
-  a.setValue(this.value);
-  board.fullUpdate();
-  updateSum();
-};
+  var sSlider = document.getElementById("start");
+  var sOutput = document.getElementById("sVal");
+  sOutput.innerHTML = sSlider.value;
+  start = a.Value();
+  sSlider.value = start;
+  sSlider.oninput = function () {
+    sOutput.innerHTML = this.value;
+    a.setValue(this.value);
+    board.fullUpdate();
+    updateSum();
+  };
 
-var eSlider = document.getElementById("end");
-var eOutput = document.getElementById("eVal");
-eOutput.innerHTML = eSlider.value;
-eSlider.value = b.Value();
-end = b.Value();
-eSlider.oninput = function () {
-  eOutput.innerHTML = this.value;
-  b.setValue(this.value);
-  board.fullUpdate();
-  updateSum();
+  var eSlider = document.getElementById("end");
+  var eOutput = document.getElementById("eVal");
+  eOutput.innerHTML = eSlider.value;
+  end = b.Value();
+  eSlider.value = end;
+  eSlider.oninput = function () {
+    eOutput.innerHTML = this.value;
+    b.setValue(this.value);
+    board.fullUpdate();
+    updateSum();
+  };
 };

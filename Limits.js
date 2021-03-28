@@ -1,23 +1,51 @@
-var inputFunction = "sin(x)";
+var inputFunction = "1/x";
+var l = 1;
+const createBoard = () => {
+  return JXG.JSXGraph.initBoard("jxgbox", {
+    axis: true,
+    boundingbox: [-10, 7, 10, -7],
+    showCopyright: false,
+    pan: {
+      enabled: true,
+      needShift: false,
+    },
+    zoom: {
+      factorX: 1.25,
+      factorY: 1.25,
+      wheel: true,
+      needShift: true,
+      min: 0.001,
+      max: 1000.0,
+      pinchHorizontal: true,
+      pinchVertical: true,
+      pinchSensitivity: 7,
+    },
+  });
+};
+const board = createBoard();
+const createPlot = (f) => {
+  return board.create("functiongraph", [f], {
+    strokeColor: "black",
+    strokeWidth: 2,
+  });
+};
+var f = board.jc.snippet(inputFunction, true, "x", false);
+var plot = createPlot(f);
+var point = board.create("point", [l, l], { name: "", fixed: true });
 
-const board = JXG.JSXGraph.initBoard("jxgbox", {
-  boundingbox: [-10, 10, 10, -10],
-  axis: true,
-  showCopyright: false,
-  pan: {
-    enabled: true,
-    needShift: false,
-  },
-});
+const updateGraph = () => {
+  f = board.jc.snippet(inputFunction, true, "x", false);
+  board.removeObject(plot);
+  plot = createPlot(f);
+  board.fullUpdate();
+};
 
-var f = board.jc.snippet("1/x", true, "x", false);
-
-var plot = board.create("functiongraph", [f], {
-  strokeColor: "black",
-  strokeWidth: 2,
-});
-
-board.unsuspendUpdate();
+const limit = () => {
+  $("#limit").text(` Limit = ${plot.Y(Number(l))}`);
+  board.removeObject(point);
+  var x = plot.Y(Number(l)) == Infinity ? Number(l) : plot.Y(Number(l));
+  point = board.create("point", [x, Number(l)], { name: "", fixed: true });
+};
 
 $(document).ready(function () {
   var mjDisplayBox, mjOutBox;
@@ -31,6 +59,7 @@ $(document).ready(function () {
     console.log(evt);
     var math = $(this).val();
     inputFunction = math;
+    updateGraph();
     $(this).css("color", "black");
     if (math.length > 0) {
       try {
@@ -45,9 +74,23 @@ $(document).ready(function () {
       MathJax.Hub.Queue(["Text", mjOutBox, ""]);
     }
   });
+  $("#math-input").val(inputFunction);
+  var lSlider = document.getElementById("l");
+  var loutput = document.getElementById("lVal");
+  loutput.innerHTML = lSlider.value;
+  lSlider.value = l;
+  lSlider.oninput = function () {
+    loutput.innerHTML = this.value;
+    l = this.value;
+    limit();
+  };
+  limit();
 });
 
 $(window).resize(function () {
+  if ($(this).width() <= 1000) {
+    $("#jxgbox").css("height", "60vh");
+  } else $("#jxgbox").css("height", "90vh");
   $(".JXG_navigation_button").toArray()[1].click();
 });
 

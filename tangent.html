@@ -30,36 +30,28 @@
                 <div class="row">
                     <div class="col-3 mt-2 ">
                         <span>\[ f \left( x \right) =\]</span>
+
                     </div>
-                    <div class="col-8">
-
-                        <select class="form-control mt-3" id="function" name="function">
-                            <option value="f1"><sub>x</sub><sup>3</sup> <sub>-4x</sub><sup>2</sup><sub>+4x+16</sub></option>
-                            
-                          </select>
-
+                    <div class="col-4 mt-2 ">
+                        <span>\[ x{3}-4x{2}+4x+16\]</span>
 
                     </div>
                 </div>
+
                 <br>
                 <br>
 
                 <!--  slider for x -->
                 <div class="row">
                     <div class="col-8">
-                        <input type="range" min="1" max="400" value="10" class="slider" id="x">
+                        <input type="range" min="1" max="10" value="0" class="slider" id="x">
                     </div>
                     <div class="col-4">
-                        <p style="font-size: 12;">X= <span id="nVal"></span></p>
+                        <p style="font-size: 12;">X= <span id="slider1"></span></p>
                     </div>
                 </div>
 
-                <!--    <div class="row pb-3 pt-3 mb-5mt-2">
-                    <div class="col-3"><span>\[ f \left( x \right) =\]</span></div>
-                    <div class="col">
-                        <div id="math-display">\[ 1/x \]</div>
-                    </div>
-                </div> -->
+
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div id="jxgbox" class="jxgbox" style="height: 90vh;border-color: rgba(0,0,0,0.55);">
@@ -79,7 +71,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
-    <script src="./Limits.js"></script>
+    <script src="./tangent.js"></script>
 </body>
 
 </html>

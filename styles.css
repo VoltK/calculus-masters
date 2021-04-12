@@ -140,15 +140,15 @@ body {
 
 #canvas {
   top: 20px;
-  background-color: #e2f59c;
+  background-color: var(--primaryBtn);
 }
 
 #email {
   top: 160px;
-  background-color: #21e8e8;
+  background-color: var(--secondaryBtn);
 }
 
 #website {
   top: 300px;
-  background-color: #e2f59c;
+  background-color: var(--primaryBtn);
 }

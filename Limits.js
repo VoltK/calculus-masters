@@ -1,9 +1,12 @@
-var inputFunction = "1/x";
-var l = 1;
+var eq = ["-x^3-4*x^2+4*x+16", "tan(x)", "x+5"];
+var ef = 0;
+var piece;
+var l = 0;
+
 const createBoard = () => {
   return JXG.JSXGraph.initBoard("jxgbox", {
     axis: true,
-    boundingbox: [-10, 7, 10, -7],
+    boundingbox: [-15, 15, 15, -15],
     showCopyright: false,
     pan: {
       enabled: true,
@@ -29,52 +32,49 @@ const createPlot = (f) => {
     strokeWidth: 2,
   });
 };
-var f = board.jc.snippet(inputFunction, true, "x", false);
+var f = board.jc.snippet(eq[ef], true, "x", false);
 var plot = createPlot(f);
 var point = board.create("point", [l, l], { name: "", fixed: true });
 
 const updateGraph = () => {
-  f = board.jc.snippet(inputFunction, true, "x", false);
+  f = board.jc.snippet(eq[ef], true, "x", false);
   board.removeObject(plot);
-  plot = createPlot(f);
+  if (ef > 1) {
+    pieceWise();
+  } else {
+    board.removeObject(piece);
+    plot = createPlot(f);
+    $("#math-display2").css("display", "none");
+    $("#math-display3").css("display", "none");
+    $("#math-display1").css("display", "block");
+  }
+
   board.fullUpdate();
 };
 
 const limit = () => {
-  $("#limit").text(` Limit = ${plot.Y(Number(l))}`);
   board.removeObject(point);
-  var x = plot.Y(Number(l)) == Infinity ? Number(l) : plot.Y(Number(l));
-  point = board.create("point", [x, Number(l)], { name: "", fixed: true });
+  if (ef > 1) {
+    var y = 0;
+    if (Number(l) >= 2) y = plot.Y(Number(l));
+    else if (Number(l) < 2) y = piece.Y(Number(l));
+    point = board.create("point", [Number(l), y], {
+      name: "",
+      fixed: true,
+    });
+    $("#limit").text(` Limit = ${Number(l) == 2 ? "DNE" : y}`);
+  } else {
+    point = board.create("point", [Number(l), plot.Y(Number(l))], {
+      name: "",
+      fixed: true,
+    });
+    $("#limit").text(
+      ` Limit = ${plot.Y(Number(l)) == Infinity ? "DNE" : plot.Y(Number(l))}`
+    );
+  }
 };
 
 $(document).ready(function () {
-  var mjDisplayBox, mjOutBox;
-
-  MathJax.Hub.Queue(function () {
-    mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
-    mjOutBox = MathJax.Hub.getAllJax("math-output")[0];
-  });
-
-  $("#math-input").on("keyup", function (evt) {
-    console.log(evt);
-    var math = $(this).val();
-    inputFunction = math;
-    updateGraph();
-    $(this).css("color", "black");
-    if (math.length > 0) {
-      try {
-        var tree = MathLex.parse(math),
-          latex = MathLex.render(tree, "latex");
-        MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
-      } catch (err) {
-        $(this).css("color", "red");
-      }
-    } else {
-      MathJax.Hub.Queue(["Text", mjDisplayBox, ""]);
-      MathJax.Hub.Queue(["Text", mjOutBox, ""]);
-    }
-  });
-  $("#math-input").val(inputFunction);
   var lSlider = document.getElementById("l");
   var loutput = document.getElementById("lVal");
   loutput.innerHTML = lSlider.value;
@@ -110,3 +110,56 @@ $(document).keydown((e) => {
       break;
   }
 });
+
+const updateFunction = (test) => {
+  ef = Number(test.value - 1);
+  console.log(ef);
+  updateGraph();
+  limit();
+  updateLatex();
+};
+
+const updateLatex = () => {
+  var mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
+  try {
+    var tree = MathLex.parse(eq[ef]),
+      latex = MathLex.render(tree, "latex");
+    MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const pieceWise = () => {
+  plot = board.create(
+    "functiongraph",
+    [
+      function (x) {
+        return x + 5;
+      },
+      2,
+      99999,
+    ],
+    {
+      strokeColor: "black",
+      strokeWidth: 2,
+    }
+  );
+  piece = board.create(
+    "functiongraph",
+    [
+      function (x) {
+        return -(1 / 2) * x + 3;
+      },
+      1,
+      -99999,
+    ],
+    {
+      strokeColor: "red",
+      strokeWidth: 2,
+    }
+  );
+  $("#math-display1").css("display", "none");
+  $("#math-display2").css("display", "block");
+  $("#math-display3").css("display", "block");
+};

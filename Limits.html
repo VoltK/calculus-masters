@@ -32,20 +32,33 @@
                         <span>\[ f \left( x \right) =\]</span>
                     </div>
                     <div class="col-8">
-                        <input type="text" class="form-control mt-3" id="math-input" placeholder="Enter a function"
-                            style="font-size: 14px;">
+                        <!-- <input type="text" class="form-control mt-3" id="math-input" placeholder="Enter a function"
+                            style="font-size: 14px;"> -->
+                        <select class="custom-select mt-3" id="functionSelection" onchange="updateFunction(this)">
+                            <option value=" 1">-x^3-4*x^2+4*x+16</option>
+                            <option value="2">tan(x)</option>
+                            <option value="3"> {x+5 x>=2 & -1/2x+3 x&lt2} </option>
+
+                        </select>
                     </div>
                 </div>
 
                 <div class="row pb-3 pt-3 mb-5mt-2">
                     <div class="col-3"><span>\[ f \left( x \right) =\]</span></div>
                     <div class="col">
-                        <div id="math-display">\[ 1/x \]</div>
+                        <div id="math-display"> <span id="math-display1">\[ -x^{3} - 4 \, x^{2} + 4 \, x + 16 \]</span>
+                            <span id="math-display2" style="display: none;">
+                                \[x+5 \left\{ x \ge 2 \right\}\]
+                            </span>
+                            <span id="math-display3" style="display: none;">
+                                \[ \frac{1}{2} \, x + 3 \left\{ x&lt2 \right\}\]
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-8 mt-3">
-                        <input type="range" min="-20" max="20" value="1" class="slider" id="l">
+                        <input type="range" min="-5" max="5" value="0" class="slider" id="l">
                     </div>
                     <div class="col-4 mt-3">
                         <p style="font-size: 12;margin-top: 4px;">f(x) = <span id="lVal"></span></p>
@@ -83,7 +96,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" charset="UTF-8"
         src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
-    <script src="./Limits.js"></script>
+    <script src="./limits.js"></script>
 </body>
 
 </html>

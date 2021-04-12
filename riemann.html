@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row mt-lg-5">
-            <div class="col-lg-3 mb-3 mr-2 shadow pb-2 rounded" style="margin-left: 10px;" id="test">
-                <div class="row">
+            <div class="col-lg-3 mb-3 mr-2 shadow pb-2 rounded" style="margin-left: 10px;">
+                <div class="row pt-2">
                     <div class="col-1">
                         <a class="btn p-0 pt-1 headerBtn" href="/index.html"><svg xmlns="http://www.w3.org/2000/svg"
                                 width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -25,7 +25,7 @@
                             </svg></a>
                     </div>
                     <div class="col">
-                        <h2>Riemann Sum</h2>
+                        <h2 class="mt-1">Riemann Sum</h2>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                         <input type="range" min="1" max="400" value="10" class="slider" id="n">
                     </div>
                     <div class="col-4">
-                        <p style="font-size: 12;">n = <span id="nVal"></span></p>
+                        <p style="font-size: 15px;">n = <span id="nVal"></span></p>
                     </div>
                 </div>
                 <div class="row">
@@ -58,7 +58,7 @@
                         <input type="range" min="-100" max="0" value="1" class="slider" id="start">
                     </div>
                     <div class="col-4">
-                        <p style="font-size: 12;">a = <span id="sVal"></span></p>
+                        <p style="font-size: 15px;">a = <span id="sVal"></span></p>
                         </p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <input type="range" min="0" max="100" value="1" class="slider" id="end">
                     </div>
                     <div class="col-4">
-                        <p style="font-size: 12;">b = <span id="eVal"></span></p>
+                        <p style="font-size: 15px;">b = <span id="eVal"></span></p>
                         </p>
                     </div>
                 </div>
@@ -103,6 +103,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" charset="UTF-8"
         src="https://cdn.jsdelivr.net/npm/jsxgraph@1.2.1/distrib/jsxgraphcore.js"></script>
+    <script src="./univeraslFunc.js"></script>
     <script src="./riemann.js"></script>
 </body>
 

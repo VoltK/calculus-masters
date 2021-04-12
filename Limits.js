@@ -3,38 +3,13 @@ var ef = 0;
 var piece;
 var l = 0;
 
-const createBoard = () => {
-  return JXG.JSXGraph.initBoard("jxgbox", {
-    axis: true,
-    boundingbox: [-15, 15, 15, -15],
-    showCopyright: false,
-    pan: {
-      enabled: true,
-      needShift: false,
-    },
-    zoom: {
-      factorX: 1.25,
-      factorY: 1.25,
-      wheel: true,
-      needShift: true,
-      min: 0.001,
-      max: 1000.0,
-      pinchHorizontal: true,
-      pinchVertical: true,
-      pinchSensitivity: 7,
-    },
-  });
-};
 const board = createBoard();
-const createPlot = (f) => {
-  return board.create("functiongraph", [f], {
-    strokeColor: "black",
-    strokeWidth: 2,
-  });
-};
+
 var f = board.jc.snippet(eq[ef], true, "x", false);
+
 var plot = createPlot(f);
-var point = board.create("point", [l, l], { name: "", fixed: true });
+
+var point = board.create("point", [l, l], { name: "", fixed: true, size: 5 });
 
 const updateGraph = () => {
   f = board.jc.snippet(eq[ef], true, "x", false);
@@ -85,30 +60,6 @@ $(document).ready(function () {
     limit();
   };
   limit();
-});
-
-$(window).resize(function () {
-  if ($(this).width() <= 1000) {
-    $("#jxgbox").css("height", "60vh");
-  } else $("#jxgbox").css("height", "90vh");
-  $(".JXG_navigation_button").toArray()[1].click();
-});
-
-$(document).keydown((e) => {
-  switch (e.key) {
-    case "ArrowLeft":
-      $(".JXG_navigation_button").toArray()[3].click();
-      break;
-    case "ArrowRight":
-      $(".JXG_navigation_button").toArray()[6].click();
-      break;
-    case "ArrowUp":
-      $(".JXG_navigation_button").toArray()[5].click();
-      break;
-    case "ArrowDown":
-      $(".JXG_navigation_button").toArray()[4].click();
-      break;
-  }
 });
 
 const updateFunction = (test) => {

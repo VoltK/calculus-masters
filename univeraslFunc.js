@@ -50,3 +50,27 @@ $(document).keydown((e) => {
       break;
   }
 });
+// var nSlider = document.getElementById("n");
+// var noutput = document.getElementById("nVal");
+// noutput.innerHTML = nSlider.value;
+// nSlider.value = n;
+// nSlider.oninput = function () {
+//   noutput.innerHTML = this.value;
+//   n = this.value;
+//   board.fullUpdate();
+//   updateSum();
+// };
+
+const sliderChanger = (sliderId, displayId, tracker, graphSlider, board, param) => {
+  var slider = document.getElementById(sliderId);
+  var output = document.getElementById(displayId);
+  output.innerHTML = slider.value;
+  tracker = graphSlider.Value();
+  slider.value = tracker;
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+    graphSlider.setValue(this.value);
+    board.fullUpdate();
+    param && param();
+  };
+};

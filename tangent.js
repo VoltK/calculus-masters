@@ -1,9 +1,17 @@
 const board = createBoard();
-
+var q = 0;
 board.suspendUpdate();
 
 var f = board.jc.snippet("sin(x)", true, "x", false);
-
+var qSliderGraph = board.create(
+  "slider",
+  [
+    [1, 4],
+    [5, 4],
+    [0, 0, 5],
+  ],
+  { visible: false }
+);
 var plot = createPlot(f);
 
 var glider = board.create("glider", [0, 0, plot], { size: 5, name: "" });
@@ -18,20 +26,20 @@ var tanPoint = board.create(
       return f(glider.X() + 0.0001);
     },
   ],
-  { size: 1, name: "P" }
+  { size: 1, name: "p" }
 );
 
 var tanPoint2 = board.create(
   "point",
   [
     function () {
-      return glider.X() + 3;
+      return glider.X() + qSliderGraph.Value();
     },
     function () {
-      return f(glider.X() + 3);
+      return f(glider.X() + qSliderGraph.Value());
     },
   ],
-  { size: 1, name: "Q1" }
+  { size: 3, name: "q" }
 );
 
 var line = board.create("line", [glider, tanPoint], {
@@ -44,3 +52,7 @@ var line2 = board.create("line", [glider, tanPoint2], {
   dash: 2,
 });
 board.unsuspendUpdate();
+
+$(document).ready(() => {
+  sliderChanger("q", "qVal", q, qSliderGraph, board);
+});

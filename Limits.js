@@ -23,7 +23,6 @@ const updateGraph = () => {
     $("#math-display3").css("display", "none");
     $("#math-display1").css("display", "block");
   }
-
   board.fullUpdate();
 };
 
@@ -43,9 +42,7 @@ const limit = () => {
       name: "",
       fixed: true,
     });
-    $("#limit").text(
-      ` Limit = ${plot.Y(Number(l)) == Infinity ? "DNE" : plot.Y(Number(l))}`
-    );
+    $("#limit").text(` Limit = ${plot.Y(Number(l)) == Infinity ? "DNE" : plot.Y(Number(l))}`);
   }
 };
 
@@ -64,7 +61,6 @@ $(document).ready(function () {
 
 const updateFunction = (test) => {
   ef = Number(test.value - 1);
-  console.log(ef);
   updateGraph();
   limit();
   updateLatex();

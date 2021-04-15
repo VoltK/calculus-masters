@@ -1,5 +1,5 @@
 var inputFunction = "sin(x)";
-var n = 10;
+var nOfRect = 10;
 var start, end;
 
 const board = createBoard();
@@ -10,7 +10,7 @@ const createRiemann = (f) => {
     [
       f,
       function () {
-        return n;
+        return n.Value();
       },
       function () {
         return "left";
@@ -45,7 +45,15 @@ var b = board.create(
   ],
   { visible: false }
 );
-
+var n = board.create(
+  "slider",
+  [
+    [1, 3],
+    [5, 3],
+    [0, 10, 400],
+  ],
+  { visible: false }
+);
 var f = board.jc.snippet(inputFunction, true, "x", false);
 
 var plot = createPlot(f);
@@ -63,9 +71,7 @@ const updateGraph = () => {
 
 const updateSum = () => {
   $("#sum").text(` Sum = 
-    ${JXG.Math.Numerics.riemannsum(f, n, "left", a.Value(), b.Value()).toFixed(
-      4
-    )}`);
+    ${JXG.Math.Numerics.riemannsum(f, n, "left", a.Value(), b.Value()).toFixed(4)}`);
 };
 
 $(document).ready(function () {
@@ -98,38 +104,9 @@ $(document).ready(function () {
 });
 
 const sliders = () => {
-  var nSlider = document.getElementById("n");
-  var noutput = document.getElementById("nVal");
-  noutput.innerHTML = nSlider.value;
-  nSlider.value = n;
-  nSlider.oninput = function () {
-    noutput.innerHTML = this.value;
-    n = this.value;
-    board.fullUpdate();
-    updateSum();
-  };
+  sliderChanger("n", "nVal", nOfRect, n, board, updateSum);
 
-  var sSlider = document.getElementById("start");
-  var sOutput = document.getElementById("sVal");
-  sOutput.innerHTML = sSlider.value;
-  start = a.Value();
-  sSlider.value = start;
-  sSlider.oninput = function () {
-    sOutput.innerHTML = this.value;
-    a.setValue(this.value);
-    board.fullUpdate();
-    updateSum();
-  };
+  sliderChanger("start", "sVal", start, a, board, updateSum);
 
-  var eSlider = document.getElementById("end");
-  var eOutput = document.getElementById("eVal");
-  eOutput.innerHTML = eSlider.value;
-  end = b.Value();
-  eSlider.value = end;
-  eSlider.oninput = function () {
-    eOutput.innerHTML = this.value;
-    b.setValue(this.value);
-    board.fullUpdate();
-    updateSum();
-  };
+  sliderChanger("end", "eVal", end, b, board, updateSum);
 };

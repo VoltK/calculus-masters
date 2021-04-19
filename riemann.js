@@ -71,7 +71,7 @@ const updateGraph = () => {
 
 const updateSum = () => {
   $("#sum").text(` Sum = 
-    ${JXG.Math.Numerics.riemannsum(f, n, "left", a.Value(), b.Value()).toFixed(4)}`);
+    ${JXG.Math.Numerics.riemannsum(f, n.Value(), "left", a.Value(), b.Value()).toFixed(4)}`);
 };
 
 $(document).ready(function () {

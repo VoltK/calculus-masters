@@ -29,7 +29,7 @@ const createPlot = (f) => {
 
 $(window).resize(function () {
   if ($(this).width() <= 1000) {
-    $("#jxgbox").css("height", "60vh");
+    $("#jxgbox").css({ height: "60vh", "margin-top": "15px" });
   } else $("#jxgbox").css("height", "90vh");
   $(".JXG_navigation_button").toArray()[1].click();
 });
@@ -64,3 +64,14 @@ const sliderChanger = (sliderId, displayId, tracker, graphSlider, board, param) 
     param && param();
   };
 };
+
+$(document).ready(() => {
+  $(`<a href="/index.html">
+<div class="row justify-content-center pt-1 pb-1" style="background-color: black;">
+    <div style="border: 5px solid var(--primaryBtn); padding-inline: 20px;">
+        <div style="color: var(--secondaryBtn); font-size: 2em;" class="mt-2">C
+        </div>
+    </div>
+</div>
+</a>`).prependTo("body");
+});

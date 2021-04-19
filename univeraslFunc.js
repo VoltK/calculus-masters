@@ -66,10 +66,10 @@ const sliderChanger = (sliderId, displayId, tracker, graphSlider, board, param) 
 };
 
 $(document).ready(() => {
-  $(`<a href="/index.html">
+  $(`<a href="./index.html">
 <div class="row justify-content-center pt-1 pb-1" style="background-color: black;">
-    <div style="border: 5px solid var(--primaryBtn); padding-inline: 20px;">
-        <div style="color: var(--secondaryBtn); font-size: 2em;" class="mt-2">C
+    <div style="border: 5px solid var(--primaryBtn);">
+        <div style="color: var(--secondaryBtn); font-size: 2em; padding-inline: 30px;" class="mt-2">C
         </div>
     </div>
 </div>

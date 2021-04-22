@@ -61,7 +61,10 @@ var plot = createPlot(f);
 var riemann = createRiemann(f);
 
 const updateGraph = () => {
-  f = board.jc.snippet(inputFunction, true, "x", false);
+  try {
+    f = board.jc.snippet(inputFunction, true, "x", false);
+  } catch {}
+
   board.removeObject(riemann);
   board.removeObject(plot);
   plot = createPlot(f);
@@ -83,6 +86,7 @@ $(document).ready(function () {
   $("#math-input").on("keyup", function (evt) {
     var math = $(this).val();
     inputFunction = math;
+
     updateGraph();
     $(this).css("color", "black");
     if (math.length > 0) {

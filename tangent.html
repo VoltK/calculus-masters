@@ -27,32 +27,29 @@
                         <h2 class="mt-1">Tangent Line</h2>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3 mt-2">
-                        <span>\[ f \left( x \right) =\]</span>
-                    </div>
-                    <div class="col-4 mt-2">
-                        <span>\[ x^{3} - 4 \, x^{2} + 4 \, x + 16 \]</span>
-                    </div>
-                </div>
-                <h4>Left</h4>
-                <div class="row">
+                <div>You will approximate the slope tangent line to the curve <div class="row">
+                        <div class="col-3 mt-2">
+                            <span>\[ f \left( x \right) =\]</span>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <span>\[ -x^{3} - 4 \, x^{2} + 4 \, x + 16 \]</span>
+                        </div>
+                    </div> at the point P.
+                    First, choose a point P by clicking and dragging P to your desired location. Use the slider to move
+                    the point Q on the curve closer to P. Note that the slider represents the distance along the x-axis
+                    Q is away from P. The blue, dashed line is the secant line containing the points P and Q. The
+                    orange,
+                    dashed line is the tangent line to the curve at P. What do you observe as the point Q moves closer
+                    to P?</div>
+                <div class="row mt-5">
                     <div class="col-8">
-                        <input type="range" min="-5" max="0" value="0" class="slider" id="q2">
-                    </div>
-                    <div class="col-4">
-                        <p style="font-size: 15px;">q2 = <span id="q2Val"></span></p>
-                    </div>
-                </div>
-                <h4>Right</h4>
-                <div class="row">
-                    <div class="col-8">
-                        <input type="range" min="0" max="5" value="0" class="slider" id="q">
+                        <input type="range" min="-5" max="5" value="0" class="slider" id="q">
                     </div>
                     <div class="col-4">
                         <p style="font-size: 15px;">q1 = <span id="qVal"></span></p>
                     </div>
                 </div>
+
                 <br />
                 <br />
             </div>

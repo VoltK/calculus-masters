@@ -20,6 +20,7 @@ const createBoard = () => {
     },
   });
 };
+
 const createPlot = (f) => {
   return board.create("functiongraph", [f], {
     strokeColor: "#00A5E0",

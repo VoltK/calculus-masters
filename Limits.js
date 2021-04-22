@@ -67,25 +67,27 @@ $(document).ready(function () {
     limit();
   };
   limit();
+  $("#func2").hide();
+  $("#func3").hide();
 });
 
 const updateFunction = (test) => {
+  $(`#func${ef + 1}`).hide();
   ef = Number(test.value - 1);
+  $(`#func${ef + 1}`).show();
   updateGraph();
   limit();
-  updateLatex();
+  updateLatex(eq[ef]);
 };
 
-const updateLatex = () => {
-  var mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
-  try {
-    var tree = MathLex.parse(eq[ef]),
-      latex = MathLex.render(tree, "latex");
-    MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const updateLatex = () => {
+//   var mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
+//   try {
+//     var tree = MathLex.parse(eq[ef]),
+//       latex = MathLex.render(tree, "latex");
+//     MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
+//   } catch (err) {}
+// };
 
 const pieceWise = () => {
   plot = board.create(

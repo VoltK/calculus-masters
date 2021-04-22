@@ -1,6 +1,5 @@
 const board = createBoard();
-var q1,
-  q2 = 0;
+var q1 = 1;
 board.suspendUpdate();
 
 var f = board.jc.snippet("x^3-4*x^2+4*x+16", true, "x", false);
@@ -9,16 +8,7 @@ var qSliderGraph = board.create(
   [
     [1, 4],
     [5, 4],
-    [0, 0, 5],
-  ],
-  { visible: false }
-);
-var q2SliderGraph = board.create(
-  "slider",
-  [
-    [1, 5],
-    [5, 5],
-    [-5, 0, 0],
+    [-5, 1, 5],
   ],
   { visible: false }
 );
@@ -56,25 +46,10 @@ var tanPoint2 = board.create(
   ],
   {
     size: 2,
-    name: "q1",
+    name: "q",
   }
 );
 
-var tanPoint3 = board.create(
-  "point",
-  [
-    function () {
-      return glider.X() + q2SliderGraph.Value();
-    },
-    function () {
-      return f(glider.X() + q2SliderGraph.Value());
-    },
-  ],
-  {
-    size: 2,
-    name: "q2",
-  }
-);
 var line = board.create("line", [glider, tanPoint], {
   strokeColor: "#EE964B",
   dash: 2,
@@ -82,19 +57,13 @@ var line = board.create("line", [glider, tanPoint], {
 });
 
 var line2 = board.create("line", [glider, tanPoint2], {
-  strokeColor: "#63C7B2",
+  strokeColor: "#08BDBD",
   dash: 2,
   strokeWidth: 3,
 });
 
-var line3 = board.create("line", [glider, tanPoint3], {
-  strokeColor: "#EF9CDA",
-  dash: 2,
-  strokeWidth: 3,
-});
 board.unsuspendUpdate();
 
 $(document).ready(() => {
   sliderChanger("q", "qVal", q1, qSliderGraph, board);
-  sliderChanger("q2", "q2Val", q2, q2SliderGraph, board);
 });

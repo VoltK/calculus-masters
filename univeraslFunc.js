@@ -1,7 +1,7 @@
 const createBoard = () => {
   return JXG.JSXGraph.initBoard("jxgbox", {
     axis: true,
-    boundingbox: [-10, 27, 10, -7],
+    boundingbox: [-10, 7, 10, -7],
     showCopyright: false,
     pan: {
       enabled: true,

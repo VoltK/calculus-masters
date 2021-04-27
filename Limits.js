@@ -80,14 +80,14 @@ const updateFunction = (test) => {
   updateLatex(eq[ef]);
 };
 
-// const updateLatex = () => {
-//   var mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
-//   try {
-//     var tree = MathLex.parse(eq[ef]),
-//       latex = MathLex.render(tree, "latex");
-//     MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
-//   } catch (err) {}
-// };
+const updateLatex = () => {
+  var mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
+  try {
+    var tree = MathLex.parse(eq[ef]),
+      latex = MathLex.render(tree, "latex");
+    MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
+  } catch (err) {}
+};
 
 const pieceWise = () => {
   plot = board.create(

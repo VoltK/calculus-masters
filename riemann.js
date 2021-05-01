@@ -1,31 +1,29 @@
+// CALCULUS MASTER
+// Vlad Khudik, Prabin Regmi, Vuk Trumic, Nikola Vukic, Samantha Kutadzaushe, Khushbu Shah
+// 05/07/2021
+
+// holds the function given by the user
 var inputFunction = "sin(x)";
+// number of rectangle being displayed on the graph
 var nOfRect = 10;
+// starting and ending points of the function
 var start, end;
 
+// creates the graph on the html page and stores the object in the board
 const board = createBoard();
 
-const createRiemann = (f) => {
-  return board.create(
-    "riemannsum",
-    [
-      f,
-      function () {
-        return n.Value();
-      },
-      function () {
-        return "left";
-      },
-      function () {
-        return a.Value();
-      },
-      function () {
-        return b.Value();
-      },
-    ],
-    { fillColor: "red", fillOpacity: 0.3, strokeColor: "black" }
-  );
-};
+// creates the riemann sum function on the graph with number of rectangle start and end values
+// param: user given function
+const createRiemann = (f) =>
+  board.create("riemannsum", [f, () => n.Value(), () => "left", () => a.Value(), () => b.Value()], {
+    fillColor: "red",
+    fillOpacity: 0.3,
+    strokeColor: "black",
+  });
 
+// creates a slider that is invisible on the graph
+// this is used to make changes to the graph in real time
+// this slider controls the start point
 var a = board.create(
   "slider",
   [
@@ -36,6 +34,9 @@ var a = board.create(
   { visible: false }
 );
 
+// creates a slider that is invisible on the graph
+// this is used to make changes to the graph in real time
+// this slider controls the end point
 var b = board.create(
   "slider",
   [
@@ -45,6 +46,10 @@ var b = board.create(
   ],
   { visible: false }
 );
+
+// creates a slider that is invisible on the graph
+// this is used to make changes to the graph in real time
+// this slider controls the number of rectangle point
 var n = board.create(
   "slider",
   [
@@ -54,59 +59,76 @@ var n = board.create(
   ],
   { visible: false }
 );
+
+// parses the user input function to a javascript function that is readable by jsxgraph
 var f = board.jc.snippet(inputFunction, true, "x", false);
 
+// creates the plot or the line on the graph and stores the object in a variable
 var plot = createPlot(f);
 
+// creates the riemann sum function on the graph with end,start,and number of rect
 var riemann = createRiemann(f);
 
+// handles the updating of the graph
 const updateGraph = () => {
+  // tries to parse the user input and if there are error do nothing
   try {
     f = board.jc.snippet(inputFunction, true, "x", false);
   } catch {}
-
+  // removes the riemann sum function and the plot
   board.removeObject(riemann);
   board.removeObject(plot);
+  // creates the riemann sum function and the plot with the new function
   plot = createPlot(f);
   riemann = createRiemann(f);
+  // updates the graph
   board.fullUpdate();
 };
-
+// handles the updating of the sum
 const updateSum = () => {
+  //calculates the sum and displays it in the html
   $("#sum").text(` Sum = 
     ${JXG.Math.Numerics.riemannsum(f, n.Value(), "left", a.Value(), b.Value()).toFixed(4)}`);
 };
 
-$(document).ready(function () {
+// handles the event of the textbox
+$(document).ready(() => {
+  // defining the var to query and hold the output objects
   var mjDisplayBox, mjOutBox;
-  MathJax.Hub.Queue(function () {
+  // creates the reference to the mathjax output that hold the latex foramt
+  MathJax.Hub.Queue(() => {
     mjDisplayBox = MathJax.Hub.getAllJax("math-display")[0];
     mjOutBox = MathJax.Hub.getAllJax("math-output")[0];
   });
-  $("#math-input").on("keyup", function (evt) {
-    var math = $(this).val();
-    inputFunction = math;
-
+  // listens to the event for the input
+  $("#math-input").on("keyup", ({ target }) => {
+    var math = $(target).val(); // gets the function from the input
+    inputFunction = math; // stores the function for the graph to update
     updateGraph();
-    $(this).css("color", "black");
+    $(this).css("color", "black"); // changes the textbox color to default
     if (math.length > 0) {
+      // tries to parse and display the function in the latex format
       try {
         var tree = MathLex.parse(math),
           latex = MathLex.render(tree, "latex");
         MathJax.Hub.Queue(["Text", mjDisplayBox, latex]);
       } catch (err) {
+        // if there was an error turn textbox to red
         $(this).css("color", "red");
       }
     } else {
+      // if no value in the input, makes it empty
       MathJax.Hub.Queue(["Text", mjDisplayBox, ""]);
       MathJax.Hub.Queue(["Text", mjOutBox, ""]);
     }
   });
+  // display the sin function in the input field on initial load
   $("#math-input").val(inputFunction);
-  updateSum();
-  sliders();
+  updateSum(); // update the sum on initial load
+  sliders(); // initilize the event for the sliders
 });
 
+// handles the event of all the sliders
 const sliders = () => {
   sliderChanger("n", "nVal", nOfRect, n, board, updateSum);
 
